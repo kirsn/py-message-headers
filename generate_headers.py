@@ -15,6 +15,7 @@ from datetime import datetime as dtdt
 import os
 
 opj = os.path.join
+_today = dtdt.now()
 
 CSV_NAME = "Header Field Name"
 CSV_TEMPLATE = "Template"
@@ -27,7 +28,8 @@ IGNORE_STATUS = ["obsoleted", "deprecated"]
 DEFINITION_FORMAT = '# %(status)s, %(reference)s\n%(const)s = "%(value)s"\n'
 PACKAGE_IMPORT_FORMAT = "from %s import *"
 PACKAGE_NAME = "headers"
-MODULE_DOC = "# Generated on %s\n\n" % dtdt.now().isoformat()
+MODULE_DOC = "# Generated on %s\n\n" % _today.isoformat()
+VERSION = '\n\nVERSION = "%s"\n'
 
 
 def _constant(value):
@@ -85,6 +87,7 @@ def _generate_package(package_imports):
     with open(opj(_package(), "__init__.py"), "wb") as pkg:
         pkg.write(MODULE_DOC)
         pkg.write("\n".join(package_imports))
+        pkg.write(VERSION % _today.strftime("%Y.%m.%d"))
 
 
 def generate():

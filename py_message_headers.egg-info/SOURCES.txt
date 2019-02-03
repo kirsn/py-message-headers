@@ -1,0 +1,11 @@
+README.md
+setup.py
+headers/__init__.py
+headers/http.py
+headers/mail.py
+headers/mime.py
+headers/netnews.py
+py_message_headers.egg-info/PKG-INFO
+py_message_headers.egg-info/SOURCES.txt
+py_message_headers.egg-info/dependency_links.txt
+py_message_headers.egg-info/top_level.txt
